@@ -20,6 +20,7 @@ along with this program. If not, <see http://www.gnu.org/licenses/>.
 """
 
 import copy
+from .compat import *
 
 class Mapper( object ):
 
@@ -57,7 +58,7 @@ class Mapper( object ):
         """
 
         try:
-            return self.getDataByRule( unicode( rule ) )
+            return self.getDataByRule( text_type( rule ) )
 
         except IndexError:
             return None
@@ -78,10 +79,10 @@ class Mapper( object ):
         @rtype: type
         """
 
-        if unicode( route_name ) not in self.routes.keys():
+        if text_type( route_name ) not in iterkeys_(self.routes):
             raise IndexError('Not existing predefined route name')
 
-        return self[ self.routes[ unicode( route_name ) ] ]
+        return self[ self.routes[ text_type( route_name ) ] ]
 
     # str
     def __repr__( self ):
@@ -161,7 +162,7 @@ class Mapper( object ):
                     object_name, object_value = rule_part.split(u'*=')
                     new_object = []
                     for item in current_object:
-                        if unicode( item[object_name] ) == object_value:
+                        if text_type( item[object_name] ) == object_value:
                             new_object.append( self.getDataByRule( 
                                 rule[ rule_continues_idx: ],
                                 item
@@ -170,10 +171,10 @@ class Mapper( object ):
                     return new_object
 
                 # If it contains a =, we filter out that record
-                elif rule_part.count(u'=') == 1 and rule_part.count('*') == 0:
+                elif rule_part.count(u'=') == 1 and rule_part.count(u'*') == 0:
                     object_name, object_value = rule_part.split(u'=')
                     for item in current_object:
-                        if unicode( item[object_name] ) == object_value:
+                        if text_type( item[object_name] ) == object_value:
                             current_object = item
                             continue
 
@@ -208,10 +209,10 @@ class Mapper( object ):
                 else:
                     return None
 
-            elif isinstance( current_object, object ) and not isinstance( current_object, ( str, unicode, int, float, bool ) ):
+            elif isinstance( current_object, object ) and not isinstance( current_object, string_types + integer_types + ( float, bool, ) ):
                 current_object = getattr( current_object, rule_part )
 
-            elif isinstance( current_object, ( str, unicode ) ):
+            elif isinstance( current_object, string_types ):
                 pts = rule_part.split(u':')
                 if len( pts ) == 2:
                     pts0 = None if len( pts[0] ) == 0 else int( pts[0] )

@@ -1,5 +1,4 @@
 
-
 # -*- coding: utf-8 -*-
 
 """
@@ -243,7 +242,8 @@ class TestRoutes( unittest.TestCase ):
             ],
             'strvalue': 'many',
             'strlist': [ 'many', 'list', 'item' ],
-            'root': 'R'
+            'root': 'R',
+            u'útvonal': { u'árvíztűrőtükörfórógép': 4 }
         }, routes = { 
             'first_of_list': 'first/of/with/0',
             'last_of_list': 'first/of/with/-1',
@@ -262,7 +262,8 @@ class TestRoutes( unittest.TestCase ):
             'string_to_list': 'strvalue/!/0',
             'string_to_list_check_length': 'strvalue/!/1',
             'first_attribute_from_list': 'strlist/!/0',
-            'next_attribute_from_list': 'strlist/!/1'
+            'next_attribute_from_list': 'strlist/!/1',
+            'accent_path': u'útvonal/árvíztűrőtükörfórógép'
         })
 
     def test_map_with_list( self ):
@@ -284,6 +285,7 @@ class TestRoutes( unittest.TestCase ):
         self.assertEqual( self.dm.first_attribute_from_list, 'many' )
         self.assertEqual( self.dm.next_attribute_from_list, 'list' )
         self.assertEqual( self.dm.whole_list_with_star, self.dm.whole_list_wo_star )
+        self.assertEqual( self.dm.accent_path, 4 )
 
 if __name__ == '__main__':
     unittest.main()
