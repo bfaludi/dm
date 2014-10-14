@@ -44,7 +44,7 @@ Open a terminal and write the following:
 - `/`: Defines a next level in the given path/mapping.
 - `*`: Checks all elements in the case of lists.
 - `~`: Test operator for list to dict, if both list and dict can exist on the same level. If list exists, it can be defined what we look for, if dict exists, nothing happens, the process goes on in the given path from the next element.
-- `!`: Operator that converts list to dict. It is used if we want to get a list but it is not known whether we will get that or not.
+- `!`: Operator that converts data to list. It is used if we want to get a list but it is not known whether we will get that or not.
 - `=`: Filter the list's given value
 
 #### Examples
