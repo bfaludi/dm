@@ -224,6 +224,9 @@ class Mapper( object ):
                 else:
                     return None
 
+            elif current_object is None:
+                return None
+
             elif isinstance( current_object, object ) and not isinstance( current_object, string_types + integer_types + ( float, bool, ) ):
                 current_object = getattr( current_object, rule_part )
 

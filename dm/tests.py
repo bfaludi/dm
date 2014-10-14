@@ -27,6 +27,16 @@ class TestObject( object ):
         for k,v in kwarg.items():
             setattr( self, k, v )
 
+class Test_None( unittest.TestCase ):
+
+    def setUp( self ):
+
+        self.dm = Mapper(None)
+
+    def test_normal( self ):
+
+        self.assertIsNone( self.dm['nothing/thing'] )
+
 class Test_String( unittest.TestCase ):
 
     def setUp( self ):
