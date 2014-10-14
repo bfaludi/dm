@@ -97,6 +97,21 @@ class Mapper( object ):
             repr( self.data ) 
         )
 
+    # dict
+    def getRoutes( self ):
+
+        """
+        Returns all of the route's value.
+
+        @return: All of the route's value.
+        @rtype: dict
+        """
+
+        return {
+            route_name : self[ self.routes[ text_type( route_name ) ] ] \
+            for route_name in iterkeys_(self.routes)
+        }
+
     # type
     def getDataByRule( self, rule, current_data = None ):
 

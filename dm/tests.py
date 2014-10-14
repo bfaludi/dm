@@ -287,5 +287,29 @@ class TestRoutes( unittest.TestCase ):
         self.assertEqual( self.dm.whole_list_with_star, self.dm.whole_list_wo_star )
         self.assertEqual( self.dm.accent_path, 4 )
 
+    def test_routes( self ):
+
+        self.assertEqual( self.dm.getRoutes(), {
+            'first_of_list': 'first-item',
+            'last_of_list': 'last-item',
+            'tuple_last_first': 3,
+            'not_existing_route': None,
+            'root': 'R',
+            'existing_route': 'with-string',
+            'filtered_list': 'normal',
+            'range_of_list': ['good','normal'],
+            'attributes_from_list': ['good','normal','bad'],
+            'attribute_from_dict_via_expected_list': 'itemname',
+            'attribute_from_list': 'itemname',
+            'string_value': 'many',
+            'string_to_list': 'many',
+            'string_to_list_check_length': None,
+            'first_attribute_from_list': 'many',
+            'next_attribute_from_list': 'list',
+            'whole_list_with_star': self.dm.whole_list_wo_star,
+            'whole_list_wo_star': self.dm.whole_list_with_star,
+            'accent_path': 4,
+        })
+
 if __name__ == '__main__':
     unittest.main()
