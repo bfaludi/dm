@@ -1,31 +1,33 @@
 
-## dm / Data Mapper
+# dm / Data Mapper
 
 Use this tool to map any kind of data to the right place.
 
-	import dm
-	
-	data = dm.Mapper({
-	    'id': 1,
-	    'name': 'Steve',
-	    'others': { 
-	        'age': 41,
-	        'childs': { 'year': 1991 }
-	    },
-	})
-	
-	print( data['others/age'] )
-	# 42
-	
-	print( data['others/childs/year'] )
-	# 1991
-	
-	print( data['others/notexists'] )
-	# None
+```python
+import dm
+
+data = dm.Mapper({
+    'id': 1,
+    'name': 'Steve',
+    'others': { 
+        'age': 41,
+        'childs': { 'year': 1991 }
+    },
+})
+
+print( data['others/age'] )
+# 42
+
+print( data['others/childs/year'] )
+# 1991
+
+print( data['others/notexists'] )
+# None
+```
 
 This package works well for Python **2.x** and **3.x**!
 
-### Overview
+## Overview
 
 Each map means a path to the "data". The path can contain words, numbers (indices) and the combinations of them divided by a `/`.
 
@@ -33,13 +35,15 @@ In the light of this, let's see a more complex example based on which it will be
 
 This package is part of the [mETL](https://github.com/ceumicrodata/mETL) extract, transform, load tool.
 
-#### Installation
+### Installation
 
 Open a terminal and write the following:
 
-	$ easy_install dm
+```bash
+$ pip install dm
+```
 
-#### Operators
+### Operators
 
 - `/`: Defines a next level in the given path/mapping.
 - `*`: Checks all elements in the case of lists.
@@ -47,77 +51,81 @@ Open a terminal and write the following:
 - `!`: Operator that converts data to list. It is used if we want to get a list but it is not known whether we will get that or not.
 - `=`: Filter the list's given value
 
-#### Examples
+### Examples
 
-##### Basic
+#### Basic
 
-	import dm
-	
-	data = dm.Mapper({
-	    'id': 1,
-	    'name': 'Steve',
-	    'others': { 
-	        'age': 41,
-	        'childs': { 'year': 1991 }
-	    },
-	})
-	
-	print( data['others/age'] )
-	# 42
-	
-	print( data['others/childs/year'] )
-	# 1991
-	
-	print( data['others/notexists'] )
-	# None
+```python
+import dm
 
-##### Iterators & converters
+data = dm.Mapper({
+    'id': 1,
+    'name': 'Steve',
+    'others': { 
+        'age': 41,
+        'childs': { 'year': 1991 }
+    },
+})
 
-	import dm
-	
-	data = dm.Mapper([
-	    {
-	        'id': 1,
-	        'active': True,
-	        'name': 'Steve',
-	        'others': { 
-	            'age': 41,
-	            'childs': { 'year': 1991 }
-	        },
-	    },
-	    { 
-	        'id': 2,
-	        'active': False,
-	        'name': 'Peter',
-	        'others': { 
-	            'age': 31,
-	            'childs': [{ 'year': 1999 },{ 'year': 1992 }]
-	        },
-	    },
-	    {
-	        'id': 3,
-	        'active': True,
-	        'name': 'Bruce',
-	        'others': { 
-	            'age': 45,
-	            'childs': [{ 'year': 1987 },{ 'year': 1987 }]
-	        },
-	    }
-	])
-	
-	print( data['*/name'] )
-	# ['Steve', 'Peter', 'Bruce']
-	
-	print( data['*/others/childs/*/year'] )
-	# [None, [1999, 1992], [1987, 1987]]
-	
-	print( data['*/others/childs/!/*/year'] )
-	# [[1991], [1999, 1992], [1987, 1987]]
-	
-	print( data['*/others/childs/!/0/year'] )
-	# [1991, 1999, 1987]
-	
-	print( data['id=2/name'] )
-	# 'Peter'
+print( data['others/age'] )
+# 42
+
+print( data['others/childs/year'] )
+# 1991
+
+print( data['others/notexists'] )
+# None
+```
+
+#### Iterators & converters
+
+```python
+import dm
+
+data = dm.Mapper([
+    {
+        'id': 1,
+        'active': True,
+        'name': 'Steve',
+        'others': { 
+            'age': 41,
+            'childs': { 'year': 1991 }
+        },
+    },
+    { 
+        'id': 2,
+        'active': False,
+        'name': 'Peter',
+        'others': { 
+            'age': 31,
+            'childs': [{ 'year': 1999 },{ 'year': 1992 }]
+        },
+    },
+    {
+        'id': 3,
+        'active': True,
+        'name': 'Bruce',
+        'others': { 
+            'age': 45,
+            'childs': [{ 'year': 1987 },{ 'year': 1987 }]
+        },
+    }
+])
+
+print( data['*/name'] )
+# ['Steve', 'Peter', 'Bruce']
+
+print( data['*/others/childs/*/year'] )
+# [None, [1999, 1992], [1987, 1987]]
+
+print( data['*/others/childs/!/*/year'] )
+# [[1991], [1999, 1992], [1987, 1987]]
+
+print( data['*/others/childs/!/0/year'] )
+# [1991, 1999, 1987]
+
+print( data['id=2/name'] )
+# 'Peter'
+```
 
 Enjoy!
