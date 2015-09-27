@@ -25,7 +25,7 @@ print( data['others/notexists'] )
 # None
 ```
 
-This package works well for Python **2.7+** and **3.2+**!
+This package works well for Python **2.7+** and **3.3+**!
 
 ## Overview
 
