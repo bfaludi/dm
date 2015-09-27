@@ -130,7 +130,7 @@ class Mapper( object ):
 
         # bool
         def is_integer( s ):
-            if s[0] in (u'-', u'+'):
+            if s[0] in [u'-', u'+']:
                 return s[1:].isdigit()
 
             return s.isdigit()
