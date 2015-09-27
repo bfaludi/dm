@@ -1,5 +1,5 @@
 
-# dm / Data Mapper
+# dm / Data Mapper [![Build Status](https://travis-ci.org/bfaludi/dm.svg)](https://travis-ci.org/bfaludi/dm)
 
 Use this tool to map any kind of data to the right place.
 
