@@ -1,7 +1,12 @@
 
-# dm / Data Mapper [![Build Status](https://travis-ci.org/bfaludi/dm.svg)](https://travis-ci.org/bfaludi/dm)
+# dm (data mapper) 
 
-Use this tool to map any kind of data to the right place.
+[![Build Status](https://travis-ci.org/bfaludi/dm.svg)](https://travis-ci.org/bfaludi/dm)
+![Downloads](https://img.shields.io/pypi/dm/dm.svg)
+![Version](https://img.shields.io/pypi/v/dm.svg)
+![License](https://img.shields.io/pypi/l/dm.svg)
+
+Use this tool to map any kind of data to the right place. This package is used by [mETL](https://github.com/ceumicrodata/mETL), [daprot](https://github.com/bfaludi/daprot) and  [riwo](https://github.com/bfaludi/riwo) libraries.
 
 ```python
 import dm
